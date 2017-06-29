@@ -17,17 +17,7 @@ int main()
 	// Creates a thread for the main window.
 	std::thread mainWindowThread(mainWindow);
 
-
-	int seed = 0;
-	while (true) {
-		Sleep(1000);
-
-		int systemNumber = generateSystem(seed*seed);
-		test = int2string(systemNumber);
-		
-		std::cout << test << ", " << std::endl;
-		seed++;
-	}
+	std::thread generationThread(generate);
 
 
 	//Waits for the main window to close before closing the program.
@@ -37,9 +27,20 @@ int main()
 }
 
 
-// Takes an integer as input
-// Returns as a string.
-std::string int2string(int integer) {
+void generate() 
+{
+	int seed = 0;
+	while (true) {
+		Sleep(1000);
+		test = int2string(generateSystem(seed*seed));
+		seed++;
+	}
+}
+
+
+// Takes an integer as input and returns it as a string.
+std::string int2string(int integer) 
+{
 	std::ostringstream StrP2;
 	StrP2 << integer;
 	return StrP2.str();
@@ -47,7 +48,8 @@ std::string int2string(int integer) {
 
 
 // Renders the main window
-void mainWindow() {
+void mainWindow() 
+{
 	// Creates the main window and sets the framerate to the monitor framerate.
 	sf::RenderWindow window(sf::VideoMode(600, 600), "NeoMagna");
 	window.setVerticalSyncEnabled(true);
@@ -62,6 +64,13 @@ void mainWindow() {
 	text.setStyle(sf::Text::Bold);
 	text.setFillColor(sf::Color::Black);
 	text.setPosition(50, 50);
+
+	// Text Menu Graphics
+	sf::Texture systemMenuTexture;
+	systemMenuTexture.loadFromFile("Textures/SystemMenu.png");
+	sf::Sprite systemMenu;
+	systemMenu.setTexture(systemMenuTexture);
+	systemMenu.setPosition(400, 300);
 
 
 	while (window.isOpen())
@@ -83,6 +92,7 @@ void mainWindow() {
 		text.setString(test);
 
 		window.draw(text);
+		window.draw(systemMenu);
 
 
 

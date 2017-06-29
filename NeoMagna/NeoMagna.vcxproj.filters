@@ -16,6 +16,9 @@
     <Filter Include="Resource Files\Fonts">
       <UniqueIdentifier>{697ffa13-0c8b-444d-bc7b-38320246420c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{c5e46d73-1b0e-46c4-b790-385a5be4c037}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -40,5 +43,10 @@
     <Font Include="Fonts\space.ttf">
       <Filter>Resource Files\Fonts</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\SystemMenu.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
