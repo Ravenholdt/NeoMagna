@@ -2,7 +2,16 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <iostream>
+#include <thread>
+
+#include <string> 
+#include <sstream> //int2string
+
 #include "sfml.h"
+
+#include "inputs.h"
+#include "generateSystem.h"
 
 
 void generate();
@@ -12,6 +21,6 @@ std::string int2string(int integer);
 
 void mainWindow();
 
-void starWindow(std::string starName);
+void starWindow(/*Star star*/);
 
 #endif

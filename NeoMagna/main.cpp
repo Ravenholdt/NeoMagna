@@ -1,14 +1,5 @@
 
-#include <iostream>
-#include <thread>
-
-#include <string> 
-#include <sstream> //int2string
-
 #include "main.h"
-#include "inputs.h"
-
-#include "generateSystem.h"
 
 std::string test;
 
@@ -51,9 +42,6 @@ std::string int2string(int integer)
 // Renders the main window
 void mainWindow() 
 {
-	// Star-window test
-	std::thread starWindowThread(starWindow, "Test");
-
 	// Creates the main window and sets the framerate to the monitor framerate.
 	sf::RenderWindow window(sf::VideoMode(600, 600), "NeoMagna");
 	window.setVerticalSyncEnabled(true);
@@ -82,6 +70,10 @@ void mainWindow()
 	// TMP Interface.
 	float starX = 200, starY = 200;
 
+
+	//Render variables
+	bool leftMousePressed = false;
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -105,7 +97,7 @@ void mainWindow()
 
 		// TMP Interface.
 		star.setPosition(starX, starY);
-		if (event.type == sf::Event::MouseButtonPressed)
+		/*if (event.type == sf::Event::MouseButtonPressed)
 		{
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
@@ -114,6 +106,24 @@ void mainWindow()
 					std::cout << "HIT!" << std::endl;
 				}
 			}
+		}*/
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+			if (!leftMousePressed) {
+				sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+				std::cout << "Mouse was pressed." << std::endl;
+				if ((mousePosition.x < starX + 20 && mousePosition.x > starX - 20) && (mousePosition.y < starY + 20 && mousePosition.y > starY - 20)) {
+					std::cout << "HIT!" << std::endl;
+
+					// Star-window test
+					//std::thread starWindowThread(starWindow/*, newStar*/);
+				}
+			}
+			leftMousePressed = true;
+		}
+		else
+		{
+			leftMousePressed = false;
 		}
 
 		window.draw(star);
@@ -127,9 +137,9 @@ void mainWindow()
 	}
 }
 
-void starWindow(std::string starName = "sol")
+void starWindow(/*Star star*/)
 {
-	sf::RenderWindow window(sf::VideoMode(600, 600), "NeoMagna: " + starName);
+	sf::RenderWindow window(sf::VideoMode(600, 600), "NeoMagna: " /*+ star.starName*/);
 
 	while (window.isOpen()) {
 		sf::Event event;
