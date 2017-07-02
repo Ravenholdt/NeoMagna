@@ -72,11 +72,9 @@ void mainWindow()
 	systemMenu.setTexture(systemMenuTexture);
 	systemMenu.setPosition(400, 300);
 
-	// Create tmp-system icon.
-	sf::CircleShape star(20);
-	star.setOrigin(10, 10);
-	star.setFillColor(sf::Color::White);
-	
+	//Create TMP sun.
+	Star newStar(sf::Vector2f(200.f, 200.f));
+
 	// TMP Interface.
 	float starX = 200, starY = 200;
 
@@ -90,11 +88,13 @@ void mainWindow()
 		}
 
 
-
 		// Clears the render buffer.
 		window.clear(sf::Color::Green);
 
-
+		// Create tmp-system icon.
+		sf::CircleShape star(newStar.getSize());
+		star.setOrigin(newStar.getSize(), newStar.getSize());
+		star.setFillColor(sf::Color::White);
 
 		text.setString(test);
 
@@ -105,7 +105,7 @@ void mainWindow()
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
 				std::cout << "Mouse was pressed." << std::endl;
-				if ((event.mouseButton.x < starX + 10 && event.mouseButton.x > starX - 10) && (event.mouseButton.y < starY + 10 && event.mouseButton.y > starY - 10)) {
+				if ((event.mouseButton.x < starX + 20 && event.mouseButton.x > starX - 20) && (event.mouseButton.y < starY + 20 && event.mouseButton.y > starY - 20)) {
 					std::cout << "HIT!" << std::endl;
 				}
 			}
