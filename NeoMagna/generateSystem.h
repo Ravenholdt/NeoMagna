@@ -17,6 +17,8 @@ public:
 	float getSize();
 	int getID();
 
+	std::string starName;
+
 
 private:
 	int systemID;

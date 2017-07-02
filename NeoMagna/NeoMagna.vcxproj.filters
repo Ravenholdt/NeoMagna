@@ -38,6 +38,9 @@
     <ClInclude Include="generateSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Fonts\space.ttf">

@@ -11,6 +11,7 @@ int generateSystem(int seed) {
 Star::Star(sf::Vector2f position) {
 	pos = position;
 	radius = 20;
+	starName = "Proxima Centauri";
 }
 
 // Get values

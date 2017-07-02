@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="generateSystem.h" />
+    <ClInclude Include="inputs.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="sfml.h" />
   </ItemGroup>

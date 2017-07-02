@@ -12,4 +12,6 @@ std::string int2string(int integer);
 
 void mainWindow();
 
+void starWindow(std::string starName);
+
 #endif

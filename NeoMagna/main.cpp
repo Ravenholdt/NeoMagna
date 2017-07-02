@@ -6,6 +6,7 @@
 #include <sstream> //int2string
 
 #include "main.h"
+#include "inputs.h"
 
 #include "generateSystem.h"
 
@@ -50,6 +51,9 @@ std::string int2string(int integer)
 // Renders the main window
 void mainWindow() 
 {
+	// Star-window test
+	std::thread starWindowThread(starWindow, "Test");
+
 	// Creates the main window and sets the framerate to the monitor framerate.
 	sf::RenderWindow window(sf::VideoMode(600, 600), "NeoMagna");
 	window.setVerticalSyncEnabled(true);
@@ -83,10 +87,11 @@ void mainWindow()
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed) 
+			{
 				window.close();
+			}
 		}
-
 
 		// Clears the render buffer.
 		window.clear(sf::Color::Green);
@@ -119,5 +124,19 @@ void mainWindow()
 
 		// Render everything that has been drawn.
 		window.display();
+	}
+}
+
+void starWindow(std::string starName = "sol")
+{
+	sf::RenderWindow window(sf::VideoMode(600, 600), "NeoMagna: " + starName);
+
+	while (window.isOpen()) {
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
 	}
 }
